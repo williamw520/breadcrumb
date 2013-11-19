@@ -1,7 +1,7 @@
 Breadcrumb for Emacs
 ====================
 
-# About
+## About
 Breadcrumb is an add-on module for Emacs letting you to set a series of quick bookmarks
 in the file buffers, and jump back to them quickly.
 
@@ -10,7 +10,7 @@ get lost and forget which files and where in the files you have visited along th
 Breadcrumb let you leave "breadcrumb" bookmarks along the way.  Going back is easy -
 just follow the trail of breadcrumbs to jump back to the exact locations in the files.
 
-# Feature Overview
+## Feature Overview
 * Set bookmarks with minimal hassle.  One key-stroke.
 * Bookmarks are global across buffers.
 * Jump to and cycle through bookmarks in multiple buffers quickly.  One key-stroke.
@@ -21,7 +21,7 @@ just follow the trail of breadcrumbs to jump back to the exact locations in the 
 * Bookmark list menu allows interactively listing and managing of bookmarks.
 * Interactively visit bookmarks in the other window in the bookmark menu.
 
-# Installation
+## Installation
 Put breadcrumb.el in your load-path.  The load-path is usually ~/elisp/.
 It's set in your .emacs, like this:
 
@@ -31,7 +31,7 @@ Add the following to your .emacs startup file.
 
     (require 'breadcrumb)
 
-# Configuration
+## Configuration
 
 Assign the commands to some keys in your .emacs file.
 

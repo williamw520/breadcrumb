@@ -1,6 +1,6 @@
 ;;; breadcrumb.el --- Breadcrumb.  Set breadcrumb bookmarks and jump to them.
 ;;
-;; Copyright (C) 2004-2008 William W. Wong
+;; Copyright (C) 2004-2013 William W. Wong
 ;;
 ;; Author: William W. Wong <williamw520(AT)yahoo(DOT)com>
 ;; Created: October, 2004
@@ -337,7 +337,7 @@ The list is (Bookmark1 Bookmark2 ...) where each Bookmark is (TYPE FILENAME . PO
   "Construct a bookmark record, saving its file and position in the bookmark list.
 TYPE the type of the buffer to bookmark ('file or 'info)
 FILENAME filename of the breadcrumb bookmark.
-POSITION the positio of the breadcrumb bookmark."
+POSITION the position of the breadcrumb bookmark."
   (cons type (cons filename position)))
 
 (defun bc-bookmark-type (bookmark)
