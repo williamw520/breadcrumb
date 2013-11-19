@@ -1,0 +1,4 @@
+breadcrumb
+==========
+
+Breadcrumb for Emacs
