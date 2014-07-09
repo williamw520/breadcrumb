@@ -1,4 +1,4 @@
-;;; breadcrumb.el --- Breadcrumb.  Set breadcrumb bookmarks and jump to them.
+;;; breadcrumb.el --- Set breadcrumb bookmarks and jump to them
 ;;
 ;; Copyright (C) 2004-2013 William W. Wong
 ;;
@@ -216,6 +216,7 @@
 
 ;;; User callable functions
 
+;;;###autoload
 (defun bc-set ()
   "Set a bookmark at the current buffer and current position."
   (interactive)
@@ -234,6 +235,7 @@
           ))))
   )
 
+;;;###autoload
 (defun bc-previous ()
   "Jump to the previous bookmark."
   (interactive)
@@ -243,6 +245,7 @@
   (bc-jump (bc-bookmarks-get *bc-current*))
   )
 
+;;;###autoload
 (defun bc-next ()
   "Jump to the next bookmark."
   (interactive)
@@ -252,6 +255,7 @@
   (bc-jump (bc-bookmarks-get *bc-current*))
   )
 
+;;;###autoload
 (defun bc-local-previous ()
   "Jump to the previous bookmark in the local buffer."
   (interactive)
@@ -262,6 +266,7 @@
     (message "No breadcrumb bookmark set in local buffer."))
   )
 
+;;;###autoload
 (defun bc-local-next ()
   "Jump to the next bookmark in the local buffer."
   (interactive)
@@ -272,12 +277,14 @@
     (message "No breadcrumb bookmark set in local buffer."))
   )
 
+;;;###autoload
 (defun bc-goto-current ()
   "Jump to the current bookmark."
   (interactive)
   (bc-jump-to *bc-current*)
   )
 
+;;;###autoload
 (defun bc-clear ()
   "Clear all the breadcrumb bookmarks in the queue."
   (interactive)
@@ -285,6 +292,7 @@
   (setq *bc-current* 0)
   )
 
+;;;###autoload
 (defun bc-list ()
   "Display the breadcrumb bookmarks in the buffer `*Breadcrumb Bookmarks*' to allow interactive management of them."
   (interactive)
@@ -597,7 +605,7 @@ It's the position (point) for normal buffer and (info-node-name point) for Info 
   (interactive)
   (when (bc-menu-valid-bookmark)
     (let ((bookmark-index (bc-menu-get-bookmark-index)))
-      (generic-close-buffer)
+      (bc-generic-close-buffer)
       (bc-jump-to bookmark-index)
       ))
   )
@@ -689,7 +697,7 @@ It's the position (point) for normal buffer and (info-node-name point) for Info 
 (progn
   (setq *bc-menu-mode-map* (make-keymap))
   (suppress-keymap *bc-menu-mode-map* t)
-  (define-key *bc-menu-mode-map* "q"        'generic-close-buffer)
+  (define-key *bc-menu-mode-map* "q"        'bc-generic-close-buffer)
   (define-key *bc-menu-mode-map* "j"        'bc-menu-jump)
   (define-key *bc-menu-mode-map* "\C-m"     'bc-menu-jump)
   (define-key *bc-menu-mode-map* "v"        'bc-menu-visit-other)
@@ -717,7 +725,7 @@ The following commands are available.
 \\[bc-menu-commit-deletions] -- delete bookmarks marked with `\\[bc-menu-mark-delete]'.
 \\[next-line] -- move to the next line
 \\[previous-line] -- move to the previous line
-\\[generic-close-buffer] -- close the *Breadcrumb Bookmarks* window
+\\[bc-generic-close-buffer] -- close the *Breadcrumb Bookmarks* window
 "
   (kill-all-local-variables)
   (use-local-map *bc-menu-mode-map*)
@@ -826,7 +834,7 @@ If POS is nil, use current buffer location."
         (forward-line 0)
         (1+ (count-lines start (point)))))))
 
-(defun generic-close-buffer ()
+(defun bc-generic-close-buffer ()
   "Make closing buffer work for both Emacs and XEmacs"
   (interactive)
   (if (fboundp 'quit-window)
@@ -914,5 +922,4 @@ If POS is nil, use current buffer location."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; breadcrumb.el ends here
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
